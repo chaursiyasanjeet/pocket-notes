@@ -1,0 +1,36 @@
+.sidebar {
+    width: 35vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+}
+
+.sidebar>h1 {
+    font-family: Roboto;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    letter-spacing: 0.02em;
+    text-align: left;
+    margin-left: 1.5vw;
+}
+
+.note-create-button {
+    width: 18vw;
+    height: 6vh;
+    padding: 0.15em 0.9em 0.15em 0.9em;
+    margin-left: 3vw;
+    margin-top: 2.5vh;
+    margin-bottom: 3vh;
+    border: none;
+    border-radius: 2em;
+    font-family: Roboto;
+    font-size: 1.5vw;
+    font-weight: 500;
+    line-height: 1.9vw;
+    letter-spacing: 0.02em;
+    text-align: left;
+    background: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
