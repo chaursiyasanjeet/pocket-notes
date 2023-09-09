@@ -1,8 +1,9 @@
 .sidebar {
-    width: 35vw;
-    height: 100vh;
+    width: 30vw;
+    height: 25vh;
     position: absolute;
     left: 0;
+    position: fixed;
 }
 
 .sidebar>h1 {
@@ -35,3 +36,13 @@
     cursor: pointer;
 }
 
+.allGroupsSidebar {
+    width: 30vw;
+    margin-top: 25vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 1%;
+}

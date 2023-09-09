@@ -41,8 +41,8 @@ function Sidebar() {
         <button onClick={displayGroupCreator} className="note-create-button">
           <b>+</b> Create Notes group
         </button>
-        {done}
       </div>
+      <div className="allGroupsSidebar">{done}</div>
       <GroupCreator
         groupDetails={groupDetails}
         setGroupDetails={setGroupDetails}

@@ -9,6 +9,7 @@
     padding: 1vh 0px 0px 3vh;
     display: none;
     z-index: 1;
+    overflow: auto;
 }
 
 .group-container>h3 {
