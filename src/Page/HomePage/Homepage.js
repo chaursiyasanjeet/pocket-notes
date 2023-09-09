@@ -1,5 +1,5 @@
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import NoteScreen from "../../Components/NoteScreen/NoteScreen";
+import NoteDefaultHome from "../../Components/NoteDefaultHome/NoteDefaultHome";
 import NotesContent from "../../Components/NotesContent/NotesContent";
 
 import "./Homepage.css";

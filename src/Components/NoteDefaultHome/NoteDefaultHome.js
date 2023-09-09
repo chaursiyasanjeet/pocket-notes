@@ -1,7 +1,7 @@
-import "./Notescreen.css";
+import "./NoteDefaultHome.css";
 import encryptLogo from "../../assets/encrypted.svg";
 
-function NoteScreen() {
+function NoteDefaultHome() {
   return (
     <div className="notescreen">
       <div className="description">

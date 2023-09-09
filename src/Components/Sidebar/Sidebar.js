@@ -42,7 +42,7 @@ function Sidebar() {
           <b>+</b> Create Notes group
         </button>
       </div>
-      <div className="allGroupsSidebar">{done}</div>
+      <div className="all_Groups_Sidebar">{done}</div>
       <GroupCreator
         groupDetails={groupDetails}
         setGroupDetails={setGroupDetails}
