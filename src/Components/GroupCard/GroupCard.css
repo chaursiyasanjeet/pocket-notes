@@ -3,18 +3,23 @@
     width: 100%;
     height: 12%;
     border-radius: 2.1rem 0px 0px 2.1rem;
-    background: rgba(247, 236, 220, 1);
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    cursor: pointer;
+    margin-bottom: 2vh;
+}
+
+
+.notes_selector {
+    background: rgba(247, 236, 220, 1);
 }
 
 .group-logo {
     margin-left: 5%;
     width: 45px;
     height: 45px;
-    border-radius: 50%;
-    background-color: blue;
+    border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +37,7 @@
     margin-left: 5%;
     font-family: Roboto;
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 550;
     line-height: 1.2rem;
     letter-spacing: 0.02em;
     color: black;

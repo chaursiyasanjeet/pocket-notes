@@ -8,6 +8,7 @@
     border-radius: 5px;
     padding: 1vh 0px 0px 3vh;
     display: none;
+    z-index: 1;
 }
 
 .group-container>h3 {

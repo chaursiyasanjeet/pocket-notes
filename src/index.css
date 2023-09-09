@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Roboto:wght@100;300;400&family=Single+Day&display=swap');
 
+* {
+  box-sizing: border-box;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +18,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: hidden;
   overflow-x: hidden;
-  box-sizing: border-box;
 }
 
 code {
