@@ -23,4 +23,4 @@ function NoteDefaultHome() {
   );
 }
 
-export default NoteScreen;
+export default NoteDefaultHome;

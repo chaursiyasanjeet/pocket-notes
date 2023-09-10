@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState,useContext } from "react";
 import "./GroupCreator.css";
+import NoteContext from "../Context/NoteContext";
 
 function GroupCreator({ groupDetails, setGroupDetails }) {
   const refOne = useRef(null);
