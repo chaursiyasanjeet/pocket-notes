@@ -8,11 +8,10 @@ import "./Homepage.css";
 
 export default function Homepage() {
 
-const [notesData,setNotesData]=useState({
-  groupName:"",
-  groupColor:""
+const [notesData,setNotesData]=useState(
+  localStorage.getItem("allGroups")||[]
+  )
 
-})
   return (
     <NoteContext.Provider value={{notesData,setNotesData}}>
     <div className="container">

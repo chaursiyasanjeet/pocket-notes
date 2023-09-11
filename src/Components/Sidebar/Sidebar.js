@@ -1,29 +1,28 @@
+import { useContext, useEffect } from "react";
 import "./Sidebar.css";
 import GroupCard from "../GroupCard/GroupCard";
 import GroupCreator from "../GroupCreator/GroupCreator";
-import { useState, useEffect } from "react";
+import NoteContext from "../Context/NoteContext";
 
 function Sidebar() {
+  const dataContext=useContext(NoteContext)
   const displayGroupCreator = () => {
     const show = document.getElementsByClassName("group-container");
     show[0].style.display = "block";
   };
 
-  const [groupDetails, setGroupDetails] = useState(
-    localStorage.getItem("allGroups") || []
-  );
-
   useEffect(() => {
     const data = localStorage.getItem("allGroups");
     if (data) {
-      setGroupDetails(JSON.parse(data));
+      dataContext.setNotesData(JSON.parse(data));
     } else {
-      setGroupDetails([]);
+      dataContext.setNotesData([]);
     }
-  }, []);
+  },[]);
 
   //to convert Object into array
-  const data = Object.entries(groupDetails);
+  const data = dataContext.notesData?Object.entries(dataContext.notesData):[];
+
   const done = data.map((item) => {
     return (
       <GroupCard
@@ -33,6 +32,7 @@ function Sidebar() {
       />
     );
   });
+  
 
   return (
     <>
@@ -43,10 +43,7 @@ function Sidebar() {
         </button>
       </div>
       <div className="all_Groups_Sidebar">{done}</div>
-      <GroupCreator
-        groupDetails={groupDetails}
-        setGroupDetails={setGroupDetails}
-      />
+      <GroupCreator/>
     </>
   );
 }

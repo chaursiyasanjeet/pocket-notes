@@ -2,8 +2,17 @@ import "./NotesContent.css";
 import enterlogo from "../../assets/enterlogo.svg";
 
 function NotesContent() {
+
+
+ const date=()=>{ new Date().toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })}
+
+  const time=()=> new Date().toLocaleTimeString('en-US',{hour:"numeric",minute:"numeric"})
+
   const handleNoteSave = (e) => {
-    console.log(e);
     //for creating new line in text area
     if (e.nativeEvent.keyCode === 13 && e.nativeEvent.shiftKey) {
       console.log("New notes created");
@@ -11,6 +20,7 @@ function NotesContent() {
 
     //for saving notes on press
     if (e.nativeEvent.keyCode === 13 && !e.nativeEvent.shiftKey) {
+      e.preventDefault()
       console.log("note saved");
     }
   };

@@ -1,8 +1,10 @@
 .group-container {
     margin: auto;
-    position: relative;
-    width: 35vw;
-    height: 30vh;
+    position: absolute;
+    left: 30vw;
+    top: 31vh;
+    width: 40vw;
+    height: 38vh;
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid rgba(204, 204, 204, 1);
     border-radius: 5px;
@@ -48,12 +50,57 @@ input[type="text"] {
 
 }
 
+.group_colors_choose_container {
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+}
+
+.color_chooser {
+    width: 2vw;
+    height: 2vw;
+    border: none;
+    border-radius: 100%;
+    background-color: blue;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.color_chooser:active {
+    border: 2px solid black;
+    border-radius: 6vh;
+}
+
+.color_chooser_1 {
+    background: rgba(204, 204, 204, 1)
+}
+
+.color_chooser_2 {
+    background: rgba(255, 121, 242, 1)
+}
+
+.color_chooser_3 {
+    background: rgba(67, 230, 252, 1)
+}
+
+.color_chooser_4 {
+    background: rgba(241, 149, 118, 1);
+}
+
+.color_chooser_5 {
+    background: rgba(0, 71, 255, 1)
+}
+
+.color_chooser_6 {
+    background: rgba(102, 145, 255, 1)
+}
+
 .group-container>button {
     position: absolute;
     bottom: 5%;
-    right: 4%;
+    right: 3%;
     float: right;
-    width: 13vw;
+    width: 12vw;
     height: 7vh;
     border: none;
     background: rgba(0, 0, 0, 1);
@@ -66,4 +113,8 @@ input[type="text"] {
     line-height: 2vw;
     letter-spacing: 0.035em;
     text-align: center;
+}
+
+::-webkit-validation-bubble-message {
+    display: none;
 }

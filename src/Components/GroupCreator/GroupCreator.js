@@ -2,9 +2,10 @@ import { useEffect, useRef, useState,useContext } from "react";
 import "./GroupCreator.css";
 import NoteContext from "../Context/NoteContext";
 
-function GroupCreator({ groupDetails, setGroupDetails }) {
-  const refOne = useRef(null);
+function GroupCreator() {
+  const dataContext=useContext(NoteContext)
 
+  const refOne = useRef(null);
   useEffect(() => {
     document.addEventListener("click", handleOutsideClick, true);
   }, []);
@@ -15,20 +16,31 @@ function GroupCreator({ groupDetails, setGroupDetails }) {
     }
   };
 
-  const [newGroup, setnewGroup] = useState({ groupName: "", color: "" });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setnewGroup({ ...newGroup, [name]: value });
+  
+  //creating new group
+  const [groupName, setGroupName] = useState("");
+  const [color,setColor]=useState("")
+
+  const handleClick=(e)=>{
+    e.stopPropagation()
+    console.log(e)
+   setColor(getComputedStyle(e.target).backgroundColor);
+  }
+
+  const handleGroupName = (e) => {
+
+    setGroupName(e.target.value);
   };
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    setGroupDetails([...groupDetails, newGroup]);
-    setnewGroup({ groupName: "", color: "" }); //updating input
+    const newGroup={groupName:groupName,color:color}
+    dataContext.setNotesData([...dataContext.notesData, newGroup]);
     localStorage.setItem(
       "allGroups",
-      JSON.stringify([...groupDetails, newGroup])
+      JSON.stringify([...dataContext.notesData, newGroup])
     );
+    setGroupName("")
     e.target.style.display = "none";
   };
 
@@ -43,49 +55,40 @@ function GroupCreator({ groupDetails, setGroupDetails }) {
         id="groupName"
         name="groupName"
         placeholder="Enter your group name..."
-        value={newGroup.groupName}
-        onChange={handleChange}
+        value={groupName}
+        onChange={handleGroupName}
+        required="required"
       />
       <br></br>
+      <div className="group_colors_choose_container">
       <label htmlFor="color" className="choose-color">
         Choose Colour
       </label>
-      <input
-        type="radio"
-        name="color"
-        value="rgba(179, 139, 250, 1)"
-        onChange={handleChange}
+      <div
+        className="color_chooser color_chooser_1"
+        onClick={handleClick}
       />
-      <input
-        type="radio"
-        name="color"
-        value="rgba(255, 121, 242, 1)"
-        onChange={handleChange}
+      <div
+        className="color_chooser color_chooser_2"
+        onClick={handleClick}
       />
-      <input
-        type="radio"
-        name="color"
-        value="rgba(67, 230, 252, 1)"
-        onChange={handleChange}
+      <div
+        className="color_chooser color_chooser_3"
+        onClick={handleClick}
       />
-      <input
-        type="radio"
-        name="color"
-        value="rgba(241, 149, 118, 1)"
-        onChange={handleChange}
+      <div
+        className="color_chooser color_chooser_4"
+        onClick={handleClick}
       />
-      <input
-        type="radio"
-        name="color"
-        value="rgba(0, 71, 255, 1)"
-        onChange={handleChange}
+      <div
+        className="color_chooser color_chooser_5"
+        onClick={handleClick}
       />
-      <input
-        type="radio"
-        name="color"
-        value="rgba(102, 145, 255, 1)"
-        onChange={handleChange}
+      <div
+        className="color_chooser color_chooser_6"
+        onClick={handleClick}
       />
+      </div>
       <button type="sumbit">Create</button>
     </form>
   );
