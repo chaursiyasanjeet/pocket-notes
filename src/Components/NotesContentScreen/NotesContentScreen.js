@@ -68,7 +68,7 @@ function NotesContentScreen() {
     <div className="notes_content_screen">
       <div className="notes_title">
         <div className="notes_title_logo" style={{ background: "blue" }}>
-          SA
+          RA
         </div>
         <h3 className="card-group-name">Cuvette Projects</h3>
       </div>
