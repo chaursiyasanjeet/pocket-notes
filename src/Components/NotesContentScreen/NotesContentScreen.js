@@ -62,11 +62,13 @@ function NotesContentScreen() {
     />)
   })
 
+
+
   return (
     <div className="notes_content_screen">
       <div className="notes_title">
         <div className="notes_title_logo" style={{ background: "blue" }}>
-          CA
+          SA
         </div>
         <h3 className="card-group-name">Cuvette Projects</h3>
       </div>
