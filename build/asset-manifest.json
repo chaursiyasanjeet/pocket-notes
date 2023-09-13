@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.777acd54.css",
+    "main.js": "/static/js/main.5f030f7e.js",
+    "static/media/editiorBg.png": "/static/media/editiorBg.981e2e07f14cd4175925.png",
+    "static/media/encrypted.svg": "/static/media/encrypted.9eeac894ae23e1f990d09c5302fd82ed.svg",
+    "index.html": "/index.html",
+    "static/media/enterlogo.svg": "/static/media/enterlogo.8391f91eee030cf7a1c1638b9509e0fa.svg",
+    "main.777acd54.css.map": "/static/css/main.777acd54.css.map",
+    "main.5f030f7e.js.map": "/static/js/main.5f030f7e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.777acd54.css",
+    "static/js/main.5f030f7e.js"
+  ]
+}

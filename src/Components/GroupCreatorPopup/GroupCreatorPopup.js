@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState,useContext } from "react";
-import "./GroupCreator.css";
+import { useEffect, useRef, useState, useContext } from "react";
+import "./GroupCreatorPopup.css";
 import NoteContext from "../Context/NoteContext";
 
-function GroupCreator() {
-  const dataContext=useContext(NoteContext)
+function GroupCreatorPopup() {
+  const dataContext = useContext(NoteContext)
 
   const refOne = useRef(null);
   useEffect(() => {
@@ -16,25 +16,23 @@ function GroupCreator() {
     }
   };
 
-  
+
   //creating new group
   const [groupName, setGroupName] = useState("");
-  const [color,setColor]=useState("")
+  const [color, setColor] = useState("")
 
-  const handleClick=(e)=>{
+  const handleClick = (e) => {
     e.stopPropagation()
-    console.log(e)
-   setColor(getComputedStyle(e.target).backgroundColor);
+    setColor(getComputedStyle(e.target).backgroundColor);
   }
 
   const handleGroupName = (e) => {
-
     setGroupName(e.target.value);
   };
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    const newGroup={groupName:groupName,color:color}
+    const newGroup = { groupName: groupName, color: color, isSelected: "false" }
     dataContext.setNotesData([...dataContext.notesData, newGroup]);
     localStorage.setItem(
       "allGroups",
@@ -61,37 +59,37 @@ function GroupCreator() {
       />
       <br></br>
       <div className="group_colors_choose_container">
-      <label htmlFor="color" className="choose-color">
-        Choose Colour
-      </label>
-      <div
-        className="color_chooser color_chooser_1"
-        onClick={handleClick}
-      />
-      <div
-        className="color_chooser color_chooser_2"
-        onClick={handleClick}
-      />
-      <div
-        className="color_chooser color_chooser_3"
-        onClick={handleClick}
-      />
-      <div
-        className="color_chooser color_chooser_4"
-        onClick={handleClick}
-      />
-      <div
-        className="color_chooser color_chooser_5"
-        onClick={handleClick}
-      />
-      <div
-        className="color_chooser color_chooser_6"
-        onClick={handleClick}
-      />
+        <label htmlFor="color" className="choose-color">
+          Choose Colour
+        </label>
+        <div
+          className="color_chooser color_chooser_1"
+          onClick={handleClick}
+        />
+        <div
+          className="color_chooser color_chooser_2"
+          onClick={handleClick}
+        />
+        <div
+          className="color_chooser color_chooser_3"
+          onClick={handleClick}
+        />
+        <div
+          className="color_chooser color_chooser_4"
+          onClick={handleClick}
+        />
+        <div
+          className="color_chooser color_chooser_5"
+          onClick={handleClick}
+        />
+        <div
+          className="color_chooser color_chooser_6"
+          onClick={handleClick}
+        />
       </div>
       <button type="sumbit">Create</button>
     </form>
   );
 }
 
-export default GroupCreator;
+export default GroupCreatorPopup;
