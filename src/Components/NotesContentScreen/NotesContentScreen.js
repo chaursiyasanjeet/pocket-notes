@@ -1,9 +1,11 @@
 import "./NotesContentScreen.css";
 import enterlogo from "../../assets/enterlogo.svg";
 import NotesInputData from "../NotesInputData/NotesInputData"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import NoteContext from "../Context/NoteContext"
 
 function NotesContentScreen() {
+  const notesDataContext = useContext(NoteContext)
 
   const [notesInput, setNotesInput] = useState([])
   const [textInput, setTextInput] = useState('')
@@ -23,29 +25,14 @@ function NotesContentScreen() {
     const currentTime = new Date().toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" })
     const newNote = { date: currentDate, time: currentTime, notesData: textInput }
 
-    const notes_data = [
-      {
-        groupname: "sanjeet",
-        isSelected: false,
-        notesData: [newNote]
-      }
-    ];
-    localStorage.setItem('notesInputData', JSON.stringify(notes_data))
-
-    // setNotesInput(prev => [
-    //   ...prev,
-    //   newNote
-    // ])
-
-    console.log(notesInput)
+    notesDataContext.setNotesData([...notesDataContext.notesData, newNote])
+    localStorage.setItem('notesData', JSON.stringify([...notesDataContext.notesData, newNote]))
   }
-
   const handleNoteSave = (e) => {
 
     //for creating new line in text area
     if (e.nativeEvent.keyCode === 13 && e.nativeEvent.shiftKey) {
       setTextInput(e.target.value + <br />)
-      console.log(textInput)
     }
 
     //for saving notes on pressing enter
@@ -55,23 +42,23 @@ function NotesContentScreen() {
       saveNote();
     }
   };
-  let savedDataFetched = ""
+
   useEffect(() => {
-    const data = localStorage.getItem("notes_data");
+    const data = localStorage.getItem("notesData");
     if (data) {
-      savedDataFetched = JSON.parse(data);
+      notesDataContext.setNotesData(JSON.parse(data))
     } else {
-      savedDataFetched = "";
+      notesDataContext.setNotesData([])
     }
   }, []);
 
-  const dataConvert = savedDataFetched ? Object.entries(savedDataFetched.notesData) : [];
-  console.log(dataConvert)
+  const dataConvert = notesDataContext.notesData ? Object.entries(notesDataContext.notesData) : [];
   const data = dataConvert.map((item) => {
     return (<NotesInputData
-      currentTime={item.time}
-      currentDate={item.date}
-      notesData={item.notesData}
+      key={item[0]}
+      currentTime={item[1].time}
+      currentDate={item[1].date}
+      notesData={item[1].notesData}
     />)
   })
 
@@ -83,7 +70,9 @@ function NotesContentScreen() {
         </div>
         <h3 className="card-group-name">Cuvette Projects</h3>
       </div>
-      {data}
+      <div className="notes_content">
+        {data}
+      </div>
       <div className="notes_input_area">
         <textarea
           placeholder="Enter your text here......"

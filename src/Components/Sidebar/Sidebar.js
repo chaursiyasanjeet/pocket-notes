@@ -14,14 +14,14 @@ function Sidebar() {
   useEffect(() => {
     const data = localStorage.getItem("allGroups");
     if (data) {
-      dataContext.setNotesData(JSON.parse(data));
+      dataContext.setNotesGroup(JSON.parse(data));
     } else {
-      dataContext.setNotesData([]);
+      dataContext.setNotesGroup([]);
     }
   }, []);
 
   //to convert Object into array
-  const data = dataContext.notesData ? Object.entries(dataContext.notesData) : [];
+  const data = dataContext.notesGroup ? Object.entries(dataContext.notesGroup) : [];
   const done = data.map((item) => {
     return (
       <GroupCard

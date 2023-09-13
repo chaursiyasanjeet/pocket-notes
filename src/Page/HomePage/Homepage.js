@@ -8,12 +8,16 @@ import "./Homepage.css";
 
 export default function Homepage() {
 
-  const [notesData, setNotesData] = useState(
+  const [notesGroup, setNotesGroup] = useState(
     localStorage.getItem("allGroups") || []
   )
 
+  const [notesData, setNotesData] = useState(
+    localStorage.getItem("notesData") || []
+  )
+
   return (
-    <NoteContext.Provider value={{ notesData, setNotesData }}>
+    <NoteContext.Provider value={{ notesGroup, setNotesGroup, notesData, setNotesData }}>
       <div className="container">
         <Sidebar />
         <NoteDefaultHome />

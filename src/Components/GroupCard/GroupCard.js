@@ -1,14 +1,18 @@
 import "./GroupCard.css";
 
 
-function GroupCard({ groupName, color, selected, setSelected }) {
-  let logo = groupName ? groupName.slice(0, 2).toUpperCase() : [];
+function GroupCard({ groupName, color, selected }) {
+
+  //to get name logo
+  const logo = groupName ? (/\s/.test(groupName) ? groupName
+    .split(" ")
+    .map((word) => word.charAt(0))
+    .join("")
+    .toUpperCase() : groupName.slice(0, 2).toUpperCase()) : []
 
 
-
-  const handleSelect = () => {
-    console.log(selected)
-    setSelected(prev => !prev)
+  const handleSelect = (e) => {
+    console.log(e)
   };
 
   return (

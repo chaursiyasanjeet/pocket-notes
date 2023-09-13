@@ -33,10 +33,10 @@ function GroupCreatorPopup() {
   const handleSumbit = (e) => {
     e.preventDefault();
     const newGroup = { groupName: groupName, color: color, isSelected: "false" }
-    dataContext.setNotesData([...dataContext.notesData, newGroup]);
+    dataContext.setNotesGroup([...dataContext.notesGroup, newGroup]);
     localStorage.setItem(
       "allGroups",
-      JSON.stringify([...dataContext.notesData, newGroup])
+      JSON.stringify([...dataContext.notesGroup, newGroup])
     );
     setGroupName("")
     e.target.style.display = "none";
