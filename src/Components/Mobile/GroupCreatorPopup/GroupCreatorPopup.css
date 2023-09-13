@@ -1,0 +1,108 @@
+.group-container-mobile {
+    display: none;
+    margin: auto;
+    position: absolute;
+    left: 10vw;
+    top: 31vh;
+    width: 80vw;
+    height: 35vh;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(204, 204, 204, 1);
+    border-radius: 5px;
+    padding: 1vh 0px 0px 3vh;
+    z-index: 1;
+    overflow: auto;
+}
+
+.group-container-mobile>h3 {
+    margin: 0;
+    font-family: Roboto;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    text-align: left;
+}
+
+.groupName_mobile,
+.choose-color-mobile {
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 2.4rem;
+    letter-spacing: 0.035em;
+    text-align: left;
+    margin-right: 4%;
+}
+
+#groupName_mobile {
+    outline: none;
+    border: 2px solid rgba(204, 204, 204, 1);
+    border-radius: 20px;
+    height: 12%;
+    width: 48%;
+    padding-left: 3%;
+    font-size: 0.7rem;
+}
+
+.group_colors_choose_container_mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+}
+
+.color_chooser_mobile {
+    width: 5vw;
+    height: 5vw;
+    border: none;
+    border-radius: 100%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.color_chooser:active {
+    border: 2px solid black;
+    border-radius: 6vh;
+}
+
+.color_chooser_1 {
+    background: rgba(204, 204, 204, 1)
+}
+
+.color_chooser_2 {
+    background: rgba(255, 121, 242, 1)
+}
+
+.color_chooser_3 {
+    background: rgba(67, 230, 252, 1)
+}
+
+.color_chooser_4 {
+    background: rgba(241, 149, 118, 1);
+}
+
+.color_chooser_5 {
+    background: rgba(0, 71, 255, 1)
+}
+
+.color_chooser_6 {
+    background: rgba(102, 145, 255, 1)
+}
+
+.group-container-mobile>button {
+    position: absolute;
+    bottom: 8%;
+    left: 15%;
+    width: 70%;
+    height: 7vh;
+    border: none;
+    background: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    border-radius: 0.7rem;
+    cursor: pointer;
+    font-family: Roboto;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2vw;
+    letter-spacing: 0.035em;
+    text-align: center;
+}

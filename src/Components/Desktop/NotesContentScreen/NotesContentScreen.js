@@ -1,15 +1,12 @@
 import "./NotesContentScreen.css";
-import enterlogo from "../../assets/enterlogo.svg";
+import enterlogo from "../../../assets/enterlogo.svg";
 import NotesInputData from "../NotesInputData/NotesInputData"
 import { useState, useEffect, useContext } from "react";
-import NoteContext from "../Context/NoteContext"
+import NoteContext from "../../Context/NoteContext"
 
 function NotesContentScreen() {
   const notesDataContext = useContext(NoteContext)
-
-  const [notesInput, setNotesInput] = useState([])
   const [textInput, setTextInput] = useState('')
-  const [notesData, setNotesData] = useState('')
 
   const handleChange = (e) => {
     setTextInput(e.target.value)

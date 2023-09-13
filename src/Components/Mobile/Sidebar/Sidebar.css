@@ -1,0 +1,47 @@
+.mobile_sidebar {
+    width: 100vw;
+    height: 20%;
+    position: fixed;
+    margin-left: 1.5rem
+}
+
+.mobile_sidebar>h1 {
+    font-family: Roboto;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2rem;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.note-create-button-mobile {
+    width: 80vw;
+    height: 33%;
+    margin-left: 4vw;
+    padding: 0.15em 0.2em 0.15em 0.2em;
+    margin-top: 2.5vh;
+    border: none;
+    border-radius: 2rem;
+    font-family: Roboto;
+    font-size: 6vw;
+    font-weight: 500;
+    line-height: 1.9vw;
+    letter-spacing: 0.02em;
+    text-align: center;
+    background: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.all_Groups_Sidebar_mobile {
+    width: 100vw;
+    height: 73%;
+    margin-top: 22vh;
+    margin-left: 10vw;
+    padding-top: 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

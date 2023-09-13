@@ -1,25 +1,28 @@
-.notes_content_screen {
-    width: 70vw;
+.notes_content_screen_mobile {
+    width: 100vw;
     height: 100vh;
     background: rgba(247, 236, 220, 1);
-    position: absolute;
-    right: 0;
 }
 
-.notes_title {
+.notes_title_mobile {
     width: 100%;
-    height: 10%;
+    height: 11vh;
     background: rgba(232, 232, 232, 1);
     display: flex;
     align-items: center;
-    gap: 2vh;
     position: fixed;
 }
 
-.notes_title_logo {
+.notes_title_mobile>img {
+    margin-left: 3%;
+    cursor: pointer;
+}
+
+.notes_title_logo_mobile {
     margin-left: 1.5%;
-    width: 45px;
-    height: 45px;
+    margin-right: 2%;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
     display: flex;
     align-items: center;
@@ -33,7 +36,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.notes_title>h3 {
+.notes_title_mobile>h3 {
     font-family: Roboto;
     font-size: 1.2rem;
     font-weight: 550;
@@ -41,18 +44,30 @@
     letter-spacing: 0.02em;
 }
 
-
-.notes_input_area {
-    margin-top: 70vh;
+.notes_content_mobile {
     width: 100%;
-    height: 30%;
+    height: 64vh;
+    margin-top: 12vh;
+    position: fixed;
+    padding: 1.2% 39% 0% 3.6%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 7vh;
+    cursor: pointer;
+}
+
+.notes_input_area_mobile {
+    margin-top: 76vh;
+    width: 100%;
+    height: 24%;
     background: rgba(232, 232, 232, 1);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.notes_input_area>textarea {
+.notes_input_area_mobile>textarea {
     border: none;
     outline: none;
     border-radius: 10px;
@@ -72,9 +87,9 @@
     padding-right: 3vw;
 }
 
-.notes_input_area>img {
+.notes_input_area_mobile>img {
     position: absolute;
-    width: 3%;
+    width: 5%;
     bottom: 5%;
     right: 6%;
     cursor: pointer;

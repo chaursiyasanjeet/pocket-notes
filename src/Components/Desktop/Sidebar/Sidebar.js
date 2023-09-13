@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import "./Sidebar.css";
 import GroupCard from "../GroupCard/GroupCard";
 import GroupCreatorPopup from "../GroupCreatorPopup/GroupCreatorPopup";
-import NoteContext from "../Context/NoteContext";
+import NoteContext from "../../Context/NoteContext";
 
 function Sidebar() {
   const dataContext = useContext(NoteContext)

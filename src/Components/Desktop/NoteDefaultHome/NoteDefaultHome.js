@@ -1,5 +1,5 @@
 import "./NoteDefaultHome.css";
-import encryptLogo from "../../assets/encrypted.svg";
+import encryptLogo from "../../../assets/encrypted.svg";
 
 function NoteDefaultHome() {
   return (

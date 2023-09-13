@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import "./GroupCreatorPopup.css";
-import NoteContext from "../Context/NoteContext";
+import NoteContext from "../../Context/NoteContext";
 
 function GroupCreatorPopup() {
   const dataContext = useContext(NoteContext)

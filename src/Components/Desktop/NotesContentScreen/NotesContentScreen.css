@@ -1,0 +1,94 @@
+.notes_content_screen {
+    width: 70vw;
+    height: 100vh;
+    background: rgba(247, 236, 220, 1);
+    position: absolute;
+    right: 0;
+}
+
+.notes_title {
+    width: 100%;
+    height: 10%;
+    background: rgba(232, 232, 232, 1);
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+    position: fixed;
+}
+
+.notes_title_logo {
+    margin-left: 1.5%;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+}
+
+.notes_title>h3 {
+    font-family: Roboto;
+    font-size: 1.2rem;
+    font-weight: 550;
+    line-height: 1.5rem;
+    letter-spacing: 0.02em;
+}
+
+
+.notes_input_area {
+    margin-top: 70vh;
+    width: 100%;
+    height: 30%;
+    background: rgba(232, 232, 232, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notes_input_area>textarea {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 90%;
+    height: 80%;
+    background: (255, 255, 255, 1);
+    padding-left: 3vh;
+    font-family: Roboto;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+    letter-spacing: 0.01em;
+    text-align: left;
+    position: relative;
+    resize: none;
+    padding-top: 1.3vh;
+    padding-right: 3vw;
+}
+
+.notes_input_area>img {
+    position: absolute;
+    width: 3%;
+    bottom: 5%;
+    right: 6%;
+    cursor: pointer;
+}
+
+.notes_content {
+    width: 100%;
+    height: 60%;
+    margin-top: 10vh;
+    position: fixed;
+    padding: 1.2% 39% 0% 3.6%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 7vh;
+    cursor: pointer;
+}

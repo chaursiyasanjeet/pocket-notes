@@ -1,0 +1,28 @@
+.notes_value_box_mobile {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+
+.notes_value_box_mobile>p {
+    max-width: 100%;
+    margin: 0;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    letter-spacing: 0.035em;
+    color: rgba(0, 0, 0, 1);
+    overflow-wrap: break-word;
+}
+
+.notes_date_time_mobile {
+    min-width: 40%;
+    font-family: Roboto;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 2rem;
+    letter-spacing: 0.02em;
+    color: rgba(53, 53, 53, 1);
+}

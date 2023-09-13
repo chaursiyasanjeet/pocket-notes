@@ -4,7 +4,7 @@
     position: absolute;
     right: 0;
     background: rgba(247, 236, 220, 1);
-    background-image: url("../../assets/editiorBg.png");
+    background-image: url("../../../assets/editiorBg.png");
     background-size: 30vw;
     background-repeat: no-repeat;
     background-position: 50% 40%;
