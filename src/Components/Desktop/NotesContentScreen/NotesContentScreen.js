@@ -1,17 +1,25 @@
 import "./NotesContentScreen.css";
 import enterlogo from "../../../assets/enterlogo.svg";
 import NotesInputData from "../NotesInputData/NotesInputData"
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import NoteContext from "../../Context/NoteContext"
 
 function NotesContentScreen() {
   const notesDataContext = useContext(NoteContext)
   const [textInput, setTextInput] = useState('')
+  const [dataToShow, setDataToShow] = useState('')
+  const [update, setUpdate] = useState('')
 
   const handleChange = (e) => {
     setTextInput(e.target.value)
   }
 
+  useEffect(() => {
+    const selectedGroupFetch = localStorage.getItem('selected')
+    if (selectedGroupFetch) {
+      notesDataContext.setSelected(JSON.parse(selectedGroupFetch))
+    }
+  }, [notesDataContext.selected])
 
   const saveNote = () => {
     const currentDate = new Date().toLocaleDateString("en-GB", {
@@ -21,10 +29,18 @@ function NotesContentScreen() {
     })
     const currentTime = new Date().toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" })
     const newNote = { date: currentDate, time: currentTime, notesData: textInput }
-
-    notesDataContext.setNotesData([...notesDataContext.notesData, newNote])
-    localStorage.setItem('notesData', JSON.stringify([...notesDataContext.notesData, newNote]))
+    //setting selected group
+    const groupselected = notesDataContext.selected
+    //reterving data from local storage and parsing it 
+    const storedData = JSON.parse(localStorage.getItem('notesData'));
+    //finding group index in the data
+    const foundIndex = storedData.findIndex((item) => item.groupName === groupselected);
+    if (storedData && storedData.length > 0)
+      storedData[foundIndex].notes.push(newNote)
+    localStorage.setItem('notesData', JSON.stringify(storedData))
+    setUpdate(update + 1)
   }
+
   const handleNoteSave = (e) => {
 
     //for creating new line in text area
@@ -40,37 +56,42 @@ function NotesContentScreen() {
     }
   };
 
+  const groupName = notesDataContext.selected
+  const logo = groupName ? (/\s/.test(groupName) ? groupName
+    .split(" ")
+    .map((word) => word.charAt(0))
+    .join("")
+    .toUpperCase() : groupName.slice(0, 2).toUpperCase()) : []
+
+
+  const storedData = JSON.parse(localStorage.getItem('notesData'));
+  const foundIndex = storedData.findIndex((item) => item.groupName === groupName);
   useEffect(() => {
-    const data = localStorage.getItem("notesData");
-    if (data) {
-      notesDataContext.setNotesData(JSON.parse(data))
-    } else {
-      notesDataContext.setNotesData([])
+    if (storedData && foundIndex !== -1) {
+      const dataIntoArray = storedData[foundIndex].notes;
+      const data = dataIntoArray.map((item, index) => (
+        <NotesInputData
+          key={index}
+          currentTime={item.time}
+          currentDate={item.date}
+          notesData={item.notesData}
+        />
+      ));
+      setDataToShow(data);
     }
-  }, []);
-
-  const dataConvert = notesDataContext.notesData ? Object.entries(notesDataContext.notesData) : [];
-  const data = dataConvert.map((item) => {
-    return (<NotesInputData
-      key={item[0]}
-      currentTime={item[1].time}
-      currentDate={item[1].date}
-      notesData={item[1].notesData}
-    />)
-  })
-
+  }, [update, foundIndex]);
 
 
   return (
     <div className="notes_content_screen">
       <div className="notes_title">
         <div className="notes_title_logo" style={{ background: "blue" }}>
-          RA
+          {logo}
         </div>
-        <h3 className="card-group-name">Cuvette Projects</h3>
+        <h3 className="card-group-name">{groupName}</h3>
       </div>
       <div className="notes_content">
-        {data}
+        {dataToShow}
       </div>
       <div className="notes_input_area">
         <textarea

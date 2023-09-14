@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DesktopHomepage from "./Page/Desktop/HomePage/DesktopHomepage";
 import MobileHomepage from "./Page/Mobile/MobileHomepage";
 import NoteContext from "./Components/Context/NoteContext"
@@ -12,19 +11,18 @@ function App() {
   }
   window.addEventListener('resize', checkScreen)
 
-
-  const [notesGroup, setNotesGroup] = useState(
-    localStorage.getItem("allGroups") || []
-  )
-
   const [notesData, setNotesData] = useState(
     localStorage.getItem("notesData") || []
   )
 
+  const [selected, setSelected] = useState(
+    localStorage.getItem('selected') || []
+  )
+
   return (
-    <NoteContext.Provider value={{ notesGroup, setNotesGroup, notesData, setNotesData }}>
+    <NoteContext.Provider value={{ notesData, setNotesData, selected, setSelected }}>
       <div className="App">
-        {screen > 600 ?
+        {screen > 400 ?
           <DesktopHomepage /> :
           <MobileHomepage />
         }

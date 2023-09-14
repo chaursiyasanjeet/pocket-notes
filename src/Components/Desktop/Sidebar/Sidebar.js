@@ -12,22 +12,23 @@ function Sidebar() {
   };
 
   useEffect(() => {
-    const data = localStorage.getItem("allGroups");
+    const data = localStorage.getItem("notesData");
     if (data) {
-      dataContext.setNotesGroup(JSON.parse(data));
+      dataContext.setNotesData(JSON.parse(data));
     } else {
-      dataContext.setNotesGroup([]);
+      dataContext.setNotesData([]);
     }
   }, []);
 
   //to convert Object into array
-  const data = dataContext.notesGroup ? Object.entries(dataContext.notesGroup) : [];
+  const data = dataContext.notesData ? Object.entries(dataContext.notesData) : [];
   const done = data.map((item) => {
     return (
       <GroupCard
         key={item[0]}
         groupName={item[1].groupName}
         color={item[1].color}
+        selected={item[1].isSelected}
       />
     );
   });

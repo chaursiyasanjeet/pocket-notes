@@ -1,8 +1,12 @@
 import "./GroupCard.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
+import { useContext, useRef } from "react";
+import NoteContext from "../../Context/NoteContext";
 
 
 function GroupCard({ groupName, color, selected }) {
+    const selectGroupContext = useContext(NoteContext)
+    const selectGroup = useRef(null)
     const redirect = useNavigate()
 
     //to get name logo
@@ -15,6 +19,9 @@ function GroupCard({ groupName, color, selected }) {
 
     const handleSelect = (e) => {
         redirect('/notescontent')
+        const groupSelected = selectGroup.current.innerText
+        selectGroupContext.setSelected(groupSelected)
+        localStorage.setItem('selected', JSON.stringify(groupSelected))
     };
 
     return (
@@ -26,7 +33,7 @@ function GroupCard({ groupName, color, selected }) {
             <div className="group-logo-mobile" style={{ backgroundColor: color ? color : "rgba(204, 204, 204, 1)" }}>
                 {logo}
             </div>
-            <h3 className="card-group-name-mobile">{groupName}</h3>
+            <h3 ref={selectGroup} className="card-group-name-mobile">{groupName}</h3>
         </div>
     );
 }

@@ -10,6 +10,8 @@ function NoteContentScreen() {
     const redirect = useNavigate()
     const notesDataContext = useContext(NoteContext)
     const [textInput, setTextInput] = useState('')
+    const [dataToShow, setDataToShow] = useState('')
+    const [update, setUpdate] = useState('')
 
     const handleClick = () => {
         redirect("/")
@@ -18,6 +20,12 @@ function NoteContentScreen() {
         setTextInput(e.target.value)
     }
 
+    useEffect(() => {
+        const selectedGroupFetch = localStorage.getItem('selected')
+        if (selectedGroupFetch) {
+            notesDataContext.setSelected(JSON.parse(selectedGroupFetch))
+        }
+    }, [notesDataContext.selected])
 
     const saveNote = () => {
         const currentDate = new Date().toLocaleDateString("en-GB", {
@@ -27,43 +35,44 @@ function NoteContentScreen() {
         })
         const currentTime = new Date().toLocaleTimeString('en-US', { hour: "numeric", minute: "numeric" })
         const newNote = { date: currentDate, time: currentTime, notesData: textInput }
-
-        notesDataContext.setNotesData([...notesDataContext.notesData, newNote])
-        localStorage.setItem('notesData', JSON.stringify([...notesDataContext.notesData, newNote]))
+        //setting selected group
+        const groupselected = notesDataContext.selected
+        //reterving data from local storage and parsing it 
+        const storedData = JSON.parse(localStorage.getItem('notesData'));
+        //finding group index in the data
+        const foundIndex = storedData.findIndex((item) => item.groupName === groupselected);
+        if (storedData && storedData.length > 0)
+            storedData[foundIndex].notes.push(newNote)
+        localStorage.setItem('notesData', JSON.stringify(storedData))
+        setUpdate(update + 1)
+        setTextInput('')
     }
-    const handleNoteSave = (e) => {
 
-        //for creating new line in text area
-        if (e.nativeEvent.keyCode === 13 && e.nativeEvent.shiftKey) {
-            setTextInput(e.target.value + <br />)
-        }
+    const groupName = notesDataContext.selected
+    const logo = groupName ? (/\s/.test(groupName) ? groupName
+        .split(" ")
+        .map((word) => word.charAt(0))
+        .join("")
+        .toUpperCase() : groupName.slice(0, 2).toUpperCase()) : []
 
-        //for saving notes on pressing enter
-        if (e.nativeEvent.keyCode === 13 && !e.nativeEvent.shiftKey) {
-            e.preventDefault();
-            e.target.value = ""
-            saveNote();
-        }
-    };
-
+    //reterving data from local storage and parsing it 
+    const storedData = JSON.parse(localStorage.getItem('notesData'));
+    const foundIndex = storedData.findIndex((item) => item.groupName === groupName);
     useEffect(() => {
-        const data = localStorage.getItem("notesData");
-        if (data) {
-            notesDataContext.setNotesData(JSON.parse(data))
-        } else {
-            notesDataContext.setNotesData([])
+        if (storedData && foundIndex !== -1) {
+            const dataIntoArray = storedData[foundIndex].notes;
+            const data = dataIntoArray.map((item, index) => (
+                <NoteInputData
+                    key={index}
+                    currentTime={item.time}
+                    currentDate={item.date}
+                    notesData={item.notesData}
+                />
+            ));
+            setDataToShow(data);
         }
-    }, []);
 
-    const dataConvert = notesDataContext.notesData ? Object.entries(notesDataContext.notesData) : [];
-    const data = dataConvert.map((item) => {
-        return (<NoteInputData
-            key={item[0]}
-            currentTime={item[1].time}
-            currentDate={item[1].date}
-            notesData={item[1].notesData}
-        />)
-    })
+    }, [update, foundIndex]);
 
 
 
@@ -72,18 +81,18 @@ function NoteContentScreen() {
             <div className="notes_title_mobile">
                 <img onClick={handleClick} src={backlogo} alt="back-logo" />
                 <div className="notes_title_logo_mobile" style={{ background: "blue" }}>
-                    RA
+                    {logo}
                 </div>
-                <h3 className="card-group-name-mobile">Cuvette Projects</h3>
+                <h3 className="card-group-name-mobile">{groupName}</h3>
             </div>
             <div className="notes_content_mobile">
-                {data}
+                {dataToShow}
             </div>
             <div className="notes_input_area_mobile">
                 <textarea
                     placeholder="Enter your text here......"
-                    onKeyDown={handleNoteSave}
                     onChange={handleChange}
+                    value={textInput}
                 ></textarea>
                 <img onClick={saveNote} src={enterlogo} alt="enter_logo_save_note" />
             </div>

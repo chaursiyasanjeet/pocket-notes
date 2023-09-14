@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import { useRef, useState, useContext } from "react";
 import "./GroupCreatorPopup.css";
 import NoteContext from "../../Context/NoteContext";
 
@@ -6,15 +6,16 @@ function GroupCreatorPopup() {
   const dataContext = useContext(NoteContext)
 
   const refOne = useRef(null);
-  useEffect(() => {
-    document.addEventListener("click", handleOutsideClick, true);
-  }, []);
-
   const handleOutsideClick = (e) => {
     if (!refOne.current.contains(e.target)) {
       refOne.current.style.display = "none";
     }
   };
+
+  if (refOne.current) {
+    document.addEventListener("click", handleOutsideClick, true);
+  }
+
 
 
   //creating new group
@@ -32,11 +33,11 @@ function GroupCreatorPopup() {
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    const newGroup = { groupName: groupName, color: color, isSelected: "false" }
-    dataContext.setNotesGroup([...dataContext.notesGroup, newGroup]);
+    const newGroup = { groupName: groupName, color: color, isSelected: false, notes: [] }
+    dataContext.setNotesData([...dataContext.notesData, newGroup]);
     localStorage.setItem(
-      "allGroups",
-      JSON.stringify([...dataContext.notesGroup, newGroup])
+      "notesData",
+      JSON.stringify([...dataContext.notesData, newGroup])
     );
     setGroupName("")
     e.target.style.display = "none";
