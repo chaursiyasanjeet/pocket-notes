@@ -4,14 +4,12 @@ import NoteContext from "../../Context/NoteContext";
 
 function GroupCreatorPopup() {
     const dataContext = useContext(NoteContext)
-
-    const refOne = useRef(null);
     const handleOutsideClick = (e) => {
-        if (!refOne.current.contains(e.target)) {
+        if (refOne.current && !refOne.current.contains(e.target)) {
             refOne.current.style.display = "none";
         }
     };
-
+    const refOne = useRef(null);
     if (refOne.current) {
         document.addEventListener("click", handleOutsideClick, true);
     }

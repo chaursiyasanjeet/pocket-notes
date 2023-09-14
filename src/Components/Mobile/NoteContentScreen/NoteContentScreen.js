@@ -12,6 +12,7 @@ function NoteContentScreen() {
     const [textInput, setTextInput] = useState('')
     const [dataToShow, setDataToShow] = useState('')
     const [update, setUpdate] = useState('')
+    const [color, setColor] = useState("blue")
 
     const handleClick = () => {
         redirect("/")
@@ -70,6 +71,7 @@ function NoteContentScreen() {
                 />
             ));
             setDataToShow(data);
+            setColor(storedData[foundIndex].color)
         }
 
     }, [update, foundIndex]);
@@ -80,7 +82,7 @@ function NoteContentScreen() {
         <div className="notes_content_screen_mobile">
             <div className="notes_title_mobile">
                 <img onClick={handleClick} src={backlogo} alt="back-logo" />
-                <div className="notes_title_logo_mobile" style={{ background: "blue" }}>
+                <div className="notes_title_logo_mobile" style={{ background: color }}>
                     {logo}
                 </div>
                 <h3 className="card-group-name-mobile">{groupName}</h3>
