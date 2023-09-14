@@ -14,12 +14,13 @@
 }
 
 .notes_title_mobile>img {
-    margin-left: 3%;
+    margin-left: 4%;
+    width: 7%;
     cursor: pointer;
 }
 
 .notes_title_logo_mobile {
-    margin-left: 1.5%;
+    margin-left: 2.3%;
     margin-right: 2%;
     width: 50px;
     height: 50px;
@@ -58,9 +59,9 @@
 }
 
 .notes_input_area_mobile {
-    margin-top: 76vh;
+    margin-top: 75vh;
     width: 100%;
-    height: 24%;
+    height: 25%;
     background: rgba(232, 232, 232, 1);
     display: flex;
     justify-content: center;

@@ -28,7 +28,6 @@ function Sidebar() {
                 key={item[0]}
                 groupName={item[1].groupName}
                 color={item[1].color}
-                selected={item[1].isSelected}
             />
         );
     });

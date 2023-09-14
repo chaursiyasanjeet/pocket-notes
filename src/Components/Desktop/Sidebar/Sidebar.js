@@ -21,6 +21,7 @@ function Sidebar() {
   }, []);
 
   //to convert Object into array
+
   const data = dataContext.notesData ? Object.entries(dataContext.notesData) : [];
   const done = data.map((item) => {
     return (
@@ -32,6 +33,7 @@ function Sidebar() {
       />
     );
   });
+
 
 
   return (

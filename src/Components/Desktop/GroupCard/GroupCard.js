@@ -19,12 +19,35 @@ function GroupCard({ groupName, color, selected }) {
     selectGroupContext.setSelected(groupSelected)
     localStorage.setItem('selected', JSON.stringify(groupSelected))
 
+
+    const storedData = JSON.parse(localStorage.getItem('notesData'));
+
+    if (storedData && storedData.length > 0) {
+      let foundIndex = storedData.findIndex((item) => item.isSelected === true);
+      if (foundIndex !== -1) {
+        storedData[foundIndex].isSelected = false;
+      }
+      foundIndex = storedData.findIndex((item) => item.groupName === groupSelected);
+      storedData[foundIndex].isSelected = true
+      localStorage.setItem('notesData', JSON.stringify(storedData))
+    }
   };
+
+  useEffect(() => {
+    const groupSelected = selectGroup.current.innerText
+    selectGroupContext.setSelected('')
+    localStorage.setItem('selected', JSON.stringify(groupSelected))
+  }, [])
+
+
+
+
+
 
   return (
     <div
       onClick={handleSelect}
-      style={{ backgroundColor: "blue" }}
+      style={{ backgroundColor: selected ? "rgba(247, 236, 220, 1)" : "" }}
       className="card-container"
     >
       <div className="group-logo" style={{ backgroundColor: color ? color : "rgba(204, 204, 204, 1)" }}>

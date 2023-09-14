@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import NoteContext from "../../Context/NoteContext";
 
 
-function GroupCard({ groupName, color, selected }) {
+function GroupCard({ groupName, color }) {
     const selectGroupContext = useContext(NoteContext)
     const selectGroup = useRef(null)
     const redirect = useNavigate()
@@ -27,7 +27,7 @@ function GroupCard({ groupName, color, selected }) {
     return (
         <div
             onClick={handleSelect}
-            style={{ backgroundColor: selected ? "rgba(247, 236, 220, 1)" : "" }}
+            style={{ backgroundColor: "" }}
             className="card-container-mobile"
         >
             <div className="group-logo-mobile" style={{ backgroundColor: color ? color : "rgba(204, 204, 204, 1)" }}>

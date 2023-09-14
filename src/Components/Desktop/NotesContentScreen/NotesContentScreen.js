@@ -1,7 +1,7 @@
 import "./NotesContentScreen.css";
 import enterlogo from "../../../assets/enterlogo.svg";
 import NotesInputData from "../NotesInputData/NotesInputData"
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useEffect } from "react";
 import NoteContext from "../../Context/NoteContext"
 
 function NotesContentScreen() {
@@ -9,6 +9,7 @@ function NotesContentScreen() {
   const [textInput, setTextInput] = useState('')
   const [dataToShow, setDataToShow] = useState('')
   const [update, setUpdate] = useState('')
+  const [color, setColor] = useState("blue")
 
   const handleChange = (e) => {
     setTextInput(e.target.value)
@@ -77,6 +78,7 @@ function NotesContentScreen() {
           notesData={item.notesData}
         />
       ));
+      setColor(storedData[foundIndex].color)
       setDataToShow(data);
     }
   }, [update, foundIndex]);
@@ -85,7 +87,7 @@ function NotesContentScreen() {
   return (
     <div className="notes_content_screen">
       <div className="notes_title">
-        <div className="notes_title_logo" style={{ background: "blue" }}>
+        <div className="notes_title_logo" style={{ background: color }}>
           {logo}
         </div>
         <h3 className="card-group-name">{groupName}</h3>
