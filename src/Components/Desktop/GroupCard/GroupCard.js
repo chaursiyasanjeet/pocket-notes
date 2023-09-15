@@ -1,5 +1,5 @@
 import "./GroupCard.css";
-import { useRef, useContext, useEffect } from "react";
+import { useRef, useContext, useEffect, useState } from "react";
 import NoteContext from "../../Context/NoteContext";
 
 function GroupCard({ groupName, color, selected }) {

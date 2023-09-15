@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import GroupCard from "../GroupCard/GroupCard";
 import GroupCreatorPopup from "../GroupCreatorPopup/GroupCreatorPopup";
@@ -21,8 +21,8 @@ function Sidebar() {
   }, []);
 
   //to convert Object into array
-
   const data = dataContext.notesData ? Object.entries(dataContext.notesData) : [];
+
   const done = data.map((item) => {
     return (
       <GroupCard
