@@ -18,7 +18,7 @@ function GroupCard({ groupName, color, selected }) {
   const setSelectColor = () => {
     const storedData = JSON.parse(localStorage.getItem('notesData'));
     const groupSelected = selectGroup.current.innerText
-    if (storedData && storedData.length > 0) {
+    if (storedData && storedData.length) {
       let foundIndex = storedData.findIndex((item) => item.isSelected === true);
       if (foundIndex !== -1) {
         storedData[foundIndex].isSelected = false;
@@ -29,7 +29,6 @@ function GroupCard({ groupName, color, selected }) {
       selectGroupContext.notesData[foundIndex].isSelected = true
       localStorage.setItem('notesData', JSON.stringify(storedData))
     }
-    console.log()
   }
 
   //selecting group on clicking
