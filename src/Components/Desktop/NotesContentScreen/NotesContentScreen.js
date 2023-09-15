@@ -36,9 +36,11 @@ function NotesContentScreen() {
     const storedData = JSON.parse(localStorage.getItem('notesData'));
     //finding group index in the data
     const foundIndex = storedData.findIndex((item) => item.groupName === groupselected);
-    if (storedData && storedData.length > 0)
+    if (storedData && storedData.length > 0) {
       storedData[foundIndex].notes.push(newNote)
-    localStorage.setItem('notesData', JSON.stringify(storedData))
+      notesDataContext.notesData[foundIndex].notes.push(newNote)
+      localStorage.setItem('notesData', JSON.stringify(storedData))
+    }
     setUpdate(update + 1)
   }
 
@@ -46,7 +48,7 @@ function NotesContentScreen() {
 
     //for creating new line in text area
     if (e.nativeEvent.keyCode === 13 && e.nativeEvent.shiftKey) {
-      setTextInput(e.target.value + <br />)
+      setTextInput("")
     }
 
     //for saving notes on pressing enter

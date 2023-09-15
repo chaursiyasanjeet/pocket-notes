@@ -16,8 +16,16 @@ function GroupCard({ groupName, color, selected }) {
 
   //function to set background color to selected group
   const setSelectColor = () => {
-    const storedData = JSON.parse(localStorage.getItem('notesData'));
+
+  }
+
+  //selecting group on clicking
+  const handleSelect = (e) => {
     const groupSelected = selectGroup.current.innerText
+    selectGroupContext.setSelected(groupSelected)
+    localStorage.setItem('selected', JSON.stringify(groupSelected))
+
+    const storedData = JSON.parse(localStorage.getItem('notesData'));
     if (storedData && storedData.length) {
       let foundIndex = storedData.findIndex((item) => item.isSelected === true);
       if (foundIndex !== -1) {
@@ -29,15 +37,6 @@ function GroupCard({ groupName, color, selected }) {
       selectGroupContext.notesData[foundIndex].isSelected = true
       localStorage.setItem('notesData', JSON.stringify(storedData))
     }
-  }
-
-  //selecting group on clicking
-  const handleSelect = (e) => {
-    const groupSelected = selectGroup.current.innerText
-    selectGroupContext.setSelected(groupSelected)
-    localStorage.setItem('selected', JSON.stringify(groupSelected))
-    setSelectColor()
-    console.log(selected)
   };
 
   //run on first render to clean selected group and selected name
