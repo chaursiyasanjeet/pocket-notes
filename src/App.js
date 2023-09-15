@@ -22,7 +22,7 @@ function App() {
   return (
     <NoteContext.Provider value={{ notesData, setNotesData, selected, setSelected }}>
       <div className="App">
-        {screen > 400 ?
+        {screen > 550 ?
           <DesktopHomepage /> :
           <MobileHomepage />
         }

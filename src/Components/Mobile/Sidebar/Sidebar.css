@@ -1,6 +1,6 @@
 .mobile_sidebar {
     width: 100vw;
-    height: 20%;
+    height: 20vh;
     position: fixed;
     margin-left: 1.5rem
 }
@@ -36,12 +36,12 @@
 .all_Groups_Sidebar_mobile {
     width: 100vw;
     height: 70%;
-    margin-top: 22vh;
+    margin-top: 23vh;
     margin-left: 10vw;
     padding-top: 2vw;
     display: flex;
     flex-direction: column;
-    gap: 1.8vh;
+    gap: 1.7rem;
     overflow-y: auto;
     overflow-x: hidden;
 }
