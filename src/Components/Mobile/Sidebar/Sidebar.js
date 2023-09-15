@@ -34,7 +34,7 @@ function Sidebar() {
                 />
             );
         }));
-    }, [dataContext.selected])
+    }, [])
 
     //to convert Object into array
 

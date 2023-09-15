@@ -59,7 +59,8 @@ function GroupCard({ groupName, color, selected }) {
   return (
     <div
       onClick={handleSelect}
-      className={`card-container ${selected ? "selected" : ""}`}
+      style={{ background: selected ? "rgba(247, 236, 220, 1)" : "" }}
+      className={"card-container"}
     >
       <div className="group-logo" style={{ backgroundColor: color ? color : "rgba(204, 204, 204, 1)" }}>
         {logo}
