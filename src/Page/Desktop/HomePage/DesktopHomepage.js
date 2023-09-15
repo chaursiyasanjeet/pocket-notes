@@ -10,7 +10,7 @@ export default function DesktopHomepage() {
   return (
     <div className="container">
       <Sidebar />
-      {noteData.selected.length > 0 ? <NotesContentScreen /> : <NoteDefaultHome />}
+      {noteData.selected.length ? <NotesContentScreen /> : <NoteDefaultHome />}
     </div>
   );
 }

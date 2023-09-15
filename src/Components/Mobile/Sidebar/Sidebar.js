@@ -1,10 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import GroupCard from "../GroupCard/GroupCard";
 import GroupCreatorPopup from "../GroupCreatorPopup/GroupCreatorPopup";
 import NoteContext from "../../Context/NoteContext";
 
 function Sidebar() {
+    const [sendData, setSendData] = useState()
     const dataContext = useContext(NoteContext)
     const displayGroupCreator = () => {
         const show = document.getElementsByClassName("group-container-mobile");
@@ -20,17 +21,24 @@ function Sidebar() {
         }
     }, []);
 
-    //to convert Object into array
+    const select = JSON.parse(localStorage.getItem('selected'))
     const data = dataContext.notesData ? Object.entries(dataContext.notesData) : [];
-    const done = data.map((item) => {
-        return (
-            <GroupCard
-                key={item[0]}
-                groupName={item[1].groupName}
-                color={item[1].color}
-            />
-        );
-    });
+    useEffect(() => {
+        setSendData(data.map((item) => {
+            return (
+                <GroupCard
+                    key={item[0]}
+                    groupName={item[1].groupName}
+                    color={item[1].color}
+                    selected={item[1].isSelected}
+                />
+            );
+        }));
+    }, [dataContext.selected])
+
+    //to convert Object into array
+
+
 
 
     return (
@@ -41,7 +49,7 @@ function Sidebar() {
                     <b>+</b> Create Notes group
                 </button>
             </div>
-            <div className="all_Groups_Sidebar_mobile">{done}</div>
+            <div className="all_Groups_Sidebar_mobile">{sendData}</div>
             <GroupCreatorPopup />
         </>
     );
