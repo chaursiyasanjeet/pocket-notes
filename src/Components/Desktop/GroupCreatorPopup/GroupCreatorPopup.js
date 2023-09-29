@@ -32,12 +32,15 @@ function GroupCreatorPopup() {
   const handleSumbit = (e) => {
     e.preventDefault();
     const allGroups = JSON.parse(localStorage.getItem("notesData"));
-    let foundIndex = allGroups.findIndex(
-      (item) => item.groupName === groupName
-    );
-    if (foundIndex !== -1) {
-      setGroupName("");
-      return alert("Group Name Exist");
+
+    if (allGroups && allGroups.length > 0) {
+      let foundIndex = allGroups.findIndex(
+        (item) => item.groupName === groupName
+      );
+      if (foundIndex !== -1) {
+        setGroupName("");
+        return alert("Group Name Exist");
+      }
     }
     const newGroup = {
       groupName: groupName,
