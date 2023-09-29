@@ -1,27 +1,29 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "./Sidebar.css";
 import GroupCard from "../GroupCard/GroupCard";
 import GroupCreatorPopup from "../GroupCreatorPopup/GroupCreatorPopup";
 import NoteContext from "../../Context/NoteContext";
 
 function Sidebar() {
-  const dataContext = useContext(NoteContext)
+  const dataContext = useContext(NoteContext);
   const displayGroupCreator = () => {
     const show = document.getElementsByClassName("group-container");
     show[0].style.display = "block";
   };
 
+  const dataLocal = localStorage.getItem("notesData");
   useEffect(() => {
-    const data = localStorage.getItem("notesData");
-    if (data) {
-      dataContext.setNotesData(JSON.parse(data));
+    if (dataLocal) {
+      dataContext.setNotesData(JSON.parse(dataLocal));
     } else {
       dataContext.setNotesData([]);
     }
-  }, []);
+  }, [dataLocal]);
 
   //to convert Object into array
-  const data = dataContext.notesData ? Object.entries(dataContext.notesData) : [];
+  const data = dataContext.notesData
+    ? Object.entries(dataContext.notesData)
+    : [];
 
   const done = data.map((item) => {
     return (
@@ -33,8 +35,6 @@ function Sidebar() {
       />
     );
   });
-
-
 
   return (
     <>
@@ -49,4 +49,5 @@ function Sidebar() {
     </>
   );
 }
+
 export default Sidebar;

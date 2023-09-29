@@ -3,7 +3,7 @@ import "./GroupCreatorPopup.css";
 import NoteContext from "../../Context/NoteContext";
 
 function GroupCreatorPopup() {
-  const dataContext = useContext(NoteContext)
+  const dataContext = useContext(NoteContext);
 
   const refOne = useRef(null);
   const handleOutsideClick = (e) => {
@@ -16,16 +16,14 @@ function GroupCreatorPopup() {
     document.addEventListener("click", handleOutsideClick, true);
   }
 
-
-
   //creating new group
   const [groupName, setGroupName] = useState("");
-  const [color, setColor] = useState("")
+  const [color, setColor] = useState("");
 
   const handleClick = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     setColor(getComputedStyle(e.target).backgroundColor);
-  }
+  };
 
   const handleGroupName = (e) => {
     setGroupName(e.target.value);
@@ -33,13 +31,26 @@ function GroupCreatorPopup() {
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    const newGroup = { groupName: groupName, color: color, isSelected: false, notes: [] }
+    const allGroups = JSON.parse(localStorage.getItem("notesData"));
+    let foundIndex = allGroups.findIndex(
+      (item) => item.groupName === groupName
+    );
+    if (foundIndex !== -1) {
+      setGroupName("");
+      return alert("Group Name Exist");
+    }
+    const newGroup = {
+      groupName: groupName,
+      color: color,
+      isSelected: false,
+      notes: [],
+    };
     dataContext.setNotesData([...dataContext.notesData, newGroup]);
     localStorage.setItem(
       "notesData",
       JSON.stringify([...dataContext.notesData, newGroup])
     );
-    setGroupName("")
+    setGroupName("");
     e.target.style.display = "none";
   };
 
@@ -63,30 +74,12 @@ function GroupCreatorPopup() {
         <label htmlFor="color" className="choose-color">
           Choose Colour
         </label>
-        <div
-          className="color_chooser color_chooser_1"
-          onClick={handleClick}
-        />
-        <div
-          className="color_chooser color_chooser_2"
-          onClick={handleClick}
-        />
-        <div
-          className="color_chooser color_chooser_3"
-          onClick={handleClick}
-        />
-        <div
-          className="color_chooser color_chooser_4"
-          onClick={handleClick}
-        />
-        <div
-          className="color_chooser color_chooser_5"
-          onClick={handleClick}
-        />
-        <div
-          className="color_chooser color_chooser_6"
-          onClick={handleClick}
-        />
+        <div className="color_chooser color_chooser_1" onClick={handleClick} />
+        <div className="color_chooser color_chooser_2" onClick={handleClick} />
+        <div className="color_chooser color_chooser_3" onClick={handleClick} />
+        <div className="color_chooser color_chooser_4" onClick={handleClick} />
+        <div className="color_chooser color_chooser_5" onClick={handleClick} />
+        <div className="color_chooser color_chooser_6" onClick={handleClick} />
       </div>
       <button type="sumbit">Create</button>
     </form>
