@@ -51,20 +51,22 @@ function NotesContentScreen() {
       localStorage.setItem("notesData", JSON.stringify(storedData));
     }
     setUpdate(update + 1);
+    setTextInput("");
   };
 
   const handleNoteSave = (e) => {
     //for creating new line in text area
     if (e.nativeEvent.keyCode === 13 && e.nativeEvent.shiftKey) {
-      console.log();
       setTextInput((prevValue) => prevValue + "\n");
     }
 
     //for saving notes on pressing enter
     if (e.nativeEvent.keyCode === 13 && !e.nativeEvent.shiftKey) {
       e.preventDefault();
-      e.target.value = "";
-      saveNote();
+      if (textInput.length > 0) {
+        setTextInput("");
+        saveNote();
+      }
     }
   };
 
@@ -111,10 +113,19 @@ function NotesContentScreen() {
       <div className="notes_input_area">
         <textarea
           placeholder="Enter your text here......"
+          value={textInput}
           onKeyDown={handleNoteSave}
           onChange={handleChange}
         ></textarea>
-        <img onClick={saveNote} src={enterlogo} alt="enter_logo_save_note" />
+        <img
+          onClick={() => {
+            if (textInput.length > 0) {
+              saveNote();
+            }
+          }}
+          src={enterlogo}
+          alt="enter_logo_save_note"
+        />
       </div>
     </div>
   );

@@ -92,7 +92,7 @@ input[type="text"] {
 }
 
 .color_chooser_6 {
-    background: rgba(102, 145, 255, 1)
+    background: rgba(102, 145, 255, 1);
 }
 
 .group-container>button {
@@ -117,4 +117,8 @@ input[type="text"] {
 
 ::-webkit-validation-bubble-message {
     display: none;
+}
+
+.selected {
+    border: 2px solid black;
 }
