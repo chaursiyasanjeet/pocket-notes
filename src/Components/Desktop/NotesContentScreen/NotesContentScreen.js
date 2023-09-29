@@ -20,7 +20,7 @@ function NotesContentScreen() {
     if (selectedGroupFetch) {
       notesDataContext.setSelected(JSON.parse(selectedGroupFetch));
     }
-  }, [notesDataContext.selected]);
+  }, [notesDataContext]);
 
   const saveNote = () => {
     const currentDate = new Date().toLocaleDateString("en-GB", {
@@ -56,7 +56,8 @@ function NotesContentScreen() {
   const handleNoteSave = (e) => {
     //for creating new line in text area
     if (e.nativeEvent.keyCode === 13 && e.nativeEvent.shiftKey) {
-      setTextInput("");
+      console.log();
+      setTextInput((prevValue) => prevValue + "\n");
     }
 
     //for saving notes on pressing enter
