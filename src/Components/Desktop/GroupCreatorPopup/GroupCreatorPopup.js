@@ -12,7 +12,7 @@ function GroupCreatorPopup() {
     }
   };
 
-  if (refOne.current) {
+  if (refOne && refOne.current) {
     document.addEventListener("click", handleOutsideClick, true);
   }
 

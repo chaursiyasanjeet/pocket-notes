@@ -36,6 +36,20 @@ function Sidebar() {
     );
   });
 
+  //run on first render to clean selected group and selected name
+  useEffect(() => {
+    localStorage.setItem("selected", JSON.stringify(""));
+
+    const storedData = JSON.parse(localStorage.getItem("notesData"));
+    if (storedData && storedData.length > 0) {
+      let foundIndex = storedData.findIndex((item) => item.isSelected === true);
+      if (foundIndex !== -1) {
+        storedData[foundIndex].isSelected = false;
+      }
+      localStorage.setItem("notesData", JSON.stringify(storedData));
+    }
+  }, []);
+
   return (
     <>
       <div className="sidebar">

@@ -3,19 +3,6 @@ import { useRef, useContext, useEffect } from "react";
 import NoteContext from "../../Context/NoteContext";
 
 function GroupCard({ groupName, color, selected }) {
-  useEffect(() => {
-    localStorage.setItem("selected", JSON.stringify(""));
-
-    const storedData = JSON.parse(localStorage.getItem("notesData"));
-    if (storedData && storedData.length > 0) {
-      let foundIndex = storedData.findIndex((item) => item.isSelected === true);
-      if (foundIndex !== -1) {
-        storedData[foundIndex].isSelected = false;
-      }
-      localStorage.setItem("notesData", JSON.stringify(storedData));
-    }
-  }, []);
-
   const selectGroupContext = useContext(NoteContext);
   const selectGroup = useRef(null);
 
@@ -51,8 +38,6 @@ function GroupCard({ groupName, color, selected }) {
       localStorage.setItem("notesData", JSON.stringify(storedData));
     }
   };
-
-  //run on first render to clean selected group and selected name
 
   return (
     <div
