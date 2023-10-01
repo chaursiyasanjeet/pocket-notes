@@ -20,7 +20,7 @@ function NotesContentScreen() {
     if (selectedGroupFetch) {
       notesDataContext.setSelected(JSON.parse(selectedGroupFetch));
     }
-  }, [notesDataContext]);
+  }, [notesDataContext.selected]);
 
   const saveNote = () => {
     const currentDate = new Date().toLocaleDateString("en-GB", {
