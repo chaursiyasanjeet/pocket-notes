@@ -19,7 +19,6 @@ function GroupCreatorPopup() {
   //creating new group
   const [groupName, setGroupName] = useState("");
   const [color, setColor] = useState("");
-
   const handleClick = (e) => {
     e.stopPropagation();
     setColor(getComputedStyle(e.target).backgroundColor);
@@ -54,7 +53,9 @@ function GroupCreatorPopup() {
       JSON.stringify([...dataContext.notesData, newGroup])
     );
     setGroupName("");
+    setColor("");
     e.target.style.display = "none";
+    document.removeEventListener("click", handleOutsideClick, true);
   };
 
   return (
@@ -77,12 +78,42 @@ function GroupCreatorPopup() {
         <label htmlFor="color" className="choose-color">
           Choose Colour
         </label>
-        <div className="color_chooser color_chooser_1" onClick={handleClick} />
-        <div className="color_chooser color_chooser_2" onClick={handleClick} />
-        <div className="color_chooser color_chooser_3" onClick={handleClick} />
-        <div className="color_chooser color_chooser_4" onClick={handleClick} />
-        <div className="color_chooser color_chooser_5" onClick={handleClick} />
-        <div className="color_chooser color_chooser_6" onClick={handleClick} />
+        <div
+          className={`color_chooser color_chooser_1  ${
+            color === "rgb(204, 204, 204)" ? "selected" : ""
+          }`}
+          onClick={handleClick}
+        ></div>
+        <div
+          className={`color_chooser color_chooser_2  ${
+            color === "rgb(255, 121, 242)" ? "selected" : ""
+          }`}
+          onClick={handleClick}
+        ></div>
+        <div
+          className={`color_chooser color_chooser_3  ${
+            color === "rgb(67, 230, 252)" ? "selected" : ""
+          }`}
+          onClick={handleClick}
+        ></div>
+        <div
+          className={`color_chooser color_chooser_4  ${
+            color === "rgb(241, 149, 118)" ? "selected" : ""
+          }`}
+          onClick={handleClick}
+        ></div>
+        <div
+          className={`color_chooser color_chooser_5  ${
+            color === "rgb(0, 71, 255)" ? "selected" : ""
+          }`}
+          onClick={handleClick}
+        ></div>
+        <div
+          className={`color_chooser color_chooser_6  ${
+            color === "rgb(102, 145, 255)" ? "selected" : ""
+          }`}
+          onClick={handleClick}
+        ></div>
       </div>
       <button type="sumbit">Create</button>
     </form>

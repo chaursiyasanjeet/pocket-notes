@@ -2,7 +2,7 @@
     display: none;
     margin: auto;
     position: absolute;
-    left: 30vw;
+    left: 28vw;
     top: 31vh;
     width: 40vw;
     height: 38vh;
@@ -12,6 +12,7 @@
     padding: 1vh 0px 0px 3vh;
     z-index: 1;
     overflow: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .group-container>h3 {
@@ -47,13 +48,15 @@
 
 input[type="text"] {
     color: rgba(151, 151, 151, 1);
+    width: 100%;
 
 }
 
 .group_colors_choose_container {
+    width: 75%;
     display: flex;
     align-items: center;
-    gap: 0.3vw;
+    justify-content: space-between;
 }
 
 .color_chooser {
@@ -66,10 +69,6 @@ input[type="text"] {
     cursor: pointer;
 }
 
-.color_chooser:active {
-    border: 2px solid black;
-    border-radius: 6vh;
-}
 
 .color_chooser_1 {
     background: rgba(204, 204, 204, 1)
@@ -115,9 +114,6 @@ input[type="text"] {
     text-align: center;
 }
 
-::-webkit-validation-bubble-message {
-    display: none;
-}
 
 .selected {
     border: 2px solid black;
