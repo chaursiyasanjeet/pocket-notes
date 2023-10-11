@@ -82,9 +82,8 @@ function NotesContentScreen() {
     : [];
 
   const storedData = JSON.parse(localStorage.getItem("notesData"));
-  const foundIndex = storedData.findIndex(
-    (item) => item.groupName === groupName
-  );
+  const foundIndex =
+    storedData && storedData.findIndex((item) => item.groupName === groupName);
   useEffect(() => {
     if (storedData && foundIndex !== -1) {
       const dataIntoArray = storedData[foundIndex].notes;
